@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+...
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<header>
+<img id='logo' src="" alt="logo">
+<div id='searchbox'>search box</div>
+<button>Login</button>
+<button>Registration</button>
+</header>
+<aside>
+<div class="filter">filter</div>
+<div class="filter">filter</div>
+<div class="filter">filter</div>
+</aside>
+<main>
+<div class="product">product</div>
+<div class="product">product</div>
+<div class="product">product</div>
+<div class="product">product</div>
+<div class="product">product</div>
+<div class="product">product</div>
+</main>
+</div>
+
+<div id="search">
+        Search <input v-model='term'><br>
+        <div v-for='course in results' class='course'>
+        <ul>
+        <li v-for='(value, key) in course'>
+        {{key}}: {{value}}
+        </li>
+        </ul>
+        </div>
+        </div>
+
+        <div id="filter">
+                <h1>Filters</h1>
+                <select multiple v-model='userLocations'>
+                <option v-for='topic in locations'>
+                {{topic}}
+                </option>
+                </select>
+                Selected locations: {{userLocations}}
+                <button v-on:click='reset'>reset</button>
+                <h1>Course list</h1>
+                <div v-for="course in results" class="course">
+                <ul>
+                <li v-for='(value, name) in course'>
+                {{name}}: {{value}}
+                </li>
+                </ul>
+                </div>
+                </div>
+
+                <div id="searchFilter">
+                        <!-- search -->
+                        Search <input v-model='term'><br><br>
+                        <!-- filter -->
+                        <select multiple v-model='userLocations'>
+                        <option v-for='location in locations'>
+                        {{location}}
+                        </option>
+                        </select>
+                        <button v-on:click='reset'>reset</button><br>
+                        <!-- results -->
+                        <div v-for='course in results' class='course'>
+                        <ul>
+                        <li v-for='(value, key) in course'>
+                        {{key}}: {{value}}
+                        </li>
+                        </ul>
+                        </div>
+                        </div>
+
+                        
+</body>
+</html>
