@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Display courses</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+<div id="courseApp">
+<button @click="loadCourse">Display all courses</button>
+<div v-for="course in courses">
+<ul>
+<li v-for="(value, key) in course">
+{{key}}: {{value}}
+</li>
+</ul>
+</div>
+</div>
+
+<script>
+var displayApp = new Vue({
+el: '#courseApp',
+data: {
+courses: []
+},
+methods: {
+loadCourse: function () {
+fetch('http://localhost:3000/').then(
+function (response) {
+response.json().then(
+function (text) {
+displayApp.courses = text;
+});
+});
+},
+},
+});
+</script>
+</body>
+</html>
